@@ -1,0 +1,20 @@
+# Ignore build directory
+/build/
+
+# Object files, libraries, executables
+*.o
+*.a
+*.so
+*.dll
+*.exe
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+Makefile
+
+# Other common ignored files
+*.log
+*.tmp
+*.bak
