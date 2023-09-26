@@ -11,12 +11,22 @@ find_package(DCMTK CONFIG REQUIRED)
 
 # Add your source files here
 add_executable(DicomNode main.cpp)
-# add_library(foo SHARED foo.cxx)
-set_property(TARGET DicomNode PROPERTY CXX_STANDARD 17) # see this for why these lines are added. https://github.com/microsoft/vcpkg/issues/31395#issuecomment-1571881282
+
+# If I was adding a library 
+# add_library(DicomNode SHARED foo.cxx)
+
+# see this for why these lines are added. https://github.com/microsoft/vcpkg/issues/31395#issuecomment-1571881282
+set_property(TARGET DicomNode PROPERTY CXX_STANDARD 17) 
 target_compile_options(DicomNode PUBLIC "/Zc:__cplusplus")
 
 # Link the required DCMTK libraries to your executable
 target_link_libraries(DicomNode PRIVATE DCMTK::DCMTK)
+
+# Install the executable to the bin directory, but this goes to program files, which needs administrator. 
+#install(TARGETS DicomNode DESTINATION bin)
+
+# Define the installation rule for DicomNode
+install(TARGETS DicomNode RUNTIME DESTINATION "$ENV{LOCALAPPDATA}/DicomNode/bin")
 
 
     # You may also need one or more of the following targets:
